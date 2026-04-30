@@ -1,4 +1,4 @@
-# Contributing to SClaw
+# Contributing to Sentinel-SRE
 ## Development workflow
 1. Fork and create a feature branch.
 2. Make focused changes (one concern per PR).

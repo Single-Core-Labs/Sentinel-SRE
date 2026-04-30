@@ -1,5 +1,5 @@
-# SClaw
-SClaw is an open-source, Rust-based CLI agent for SRE incident response. It helps teams investigate production issues faster using a consistent workflow, evidence collection, policy guardrails, and approval-aware remediation.
+# Sentinel-SRE
+Sentinel-SRE is an open-source, Rust-based CLI agent for SRE incident response. It helps teams investigate production issues faster using a consistent workflow, evidence collection, policy guardrails, and approval-aware remediation.
 
 ## Mission
 Build a reliable, developer-friendly incident assistant that makes on-call response faster, safer, and more repeatable without hiding critical decisions from humans.
@@ -12,7 +12,7 @@ SRE teams usually face the same operational pain points:
 - Incident handoffs and postmortems often miss structured evidence.
 - New contributors struggle to test workflows locally without full infrastructure.
 
-SClaw addresses these by providing:
+Sentinel-SRE addresses these by providing:
 - A single CLI workflow for incident intake, triage, diagnosis, mitigation, and verification.
 - Policy and approval checks before risky execution paths.
 - Standardized output (text or JSON) for handoffs and automation.
@@ -61,7 +61,7 @@ rustc --version
 ### 2) Clone and build
 ```bash path=null start=null
 git clone <your-repo-url>
-cd Sclaw
+cd Sentinel-SRE
 cargo build
 ```
 
@@ -146,16 +146,16 @@ $env:SC_REMEDIATION_WEBHOOK_URL="https://example.internal/remediation"
 cargo run -- run --service payments-api --summary "error rate spike" --severity sev2 --env prod --mode real --output text
 ```
 
-If real adapter initialization fails, SClaw falls back to mock mode for continuity.
+If real adapter initialization fails, Sentinel-SRE falls back to mock mode for continuity.
 
-## How developers use SClaw
+## How developers use Sentinel-SRE
 1. Start in `mock` mode to validate workflow behavior and contributor changes.
 2. Use `repl` during local testing or incident drills.
 3. Run `doctor` before enabling `real` mode in a team environment.
 4. Integrate JSON output with scripts, CI jobs, or chatops bots.
 5. Add adapters and harden policy logic before enabling broader remediation automation.
 
-## What problems SClaw solves
+## What problems Sentinel-SRE solves
 - **Speed:** reduces mean time to triage by structuring investigation steps.
 - **Consistency:** enforces a repeatable incident response flow.
 - **Safety:** adds policy and approval checks around risky operations.

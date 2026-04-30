@@ -1,4 +1,4 @@
-# SClaw Roadmap
+# Sentinel-SRE Roadmap
 ## v0.1 (current baseline)
 - Rust core orchestration loop with state machine
 - Policy + approval gating

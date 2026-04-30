@@ -2,14 +2,14 @@ use std::env;
 use std::io::{self, Write};
 use std::time::{SystemTime, UNIX_EPOCH};
 
-use sclaw_sre_agent::approval::RuleBasedApprovalGate;
-use sclaw_sre_agent::cli::{parse_cli, CliCommand, OutputFormat, ReplConfig, RunConfig};
-use sclaw_sre_agent::config::{ProviderConfig, RuntimeMode};
-use sclaw_sre_agent::domain::{Environment, IncidentInput, IncidentReport, Severity};
-use sclaw_sre_agent::engine::SreAgent;
-use sclaw_sre_agent::memory::KnowledgeMemory;
-use sclaw_sre_agent::policy::PolicyEngine;
-use sclaw_sre_agent::tools::{MockSreTools, RealSreTools, Toolset};
+use sentinel_sre::approval::RuleBasedApprovalGate;
+use sentinel_sre::cli::{parse_cli, CliCommand, OutputFormat, ReplConfig, RunConfig};
+use sentinel_sre::config::{ProviderConfig, RuntimeMode};
+use sentinel_sre::domain::{Environment, IncidentInput, IncidentReport, Severity};
+use sentinel_sre::engine::SreAgent;
+use sentinel_sre::memory::KnowledgeMemory;
+use sentinel_sre::policy::PolicyEngine;
+use sentinel_sre::tools::{MockSreTools, RealSreTools, Toolset};
 use serde_json::json;
 
 fn main() {
@@ -55,12 +55,12 @@ fn run_incident(config: &RunConfig) -> IncidentReport {
 }
 
 fn run_repl(mut config: ReplConfig) {
-    println!("SClaw interactive mode");
+    println!("Sentinel-SRE interactive mode");
     println!("Type an incident summary to run analysis.");
     println!("Use /help for commands, /exit to quit.");
 
     loop {
-        print!("sclaw> ");
+        print!("sentinel> ");
         if io::stdout().flush().is_err() {
             eprintln!("failed to flush prompt");
             return;
@@ -141,7 +141,7 @@ fn run_repl(mut config: ReplConfig) {
 }
 
 fn run_doctor(mode: RuntimeMode) {
-    println!("SClaw doctor");
+    println!("Sentinel-SRE doctor");
     println!("mode: {:?}", mode);
     match mode {
         RuntimeMode::Mock => {
@@ -265,7 +265,7 @@ fn print_report_json(report: &IncidentReport) {
 }
 
 fn print_benefits() {
-    println!("How SClaw CLI helps your developers and SREs:");
+    println!("How Sentinel-SRE CLI helps your developers and SREs:");
     println!("1) Faster incident triage from terminal commands or interactive mode.");
     println!("2) Consistent response flow with policy and approval guardrails.");
     println!("3) Shared audit timeline for handoffs, retros, and postmortems.");
@@ -274,13 +274,13 @@ fn print_benefits() {
 }
 
 fn print_help() {
-    println!("SClaw CLI");
+    println!("Sentinel-SRE CLI");
     println!("Usage:");
-    println!("  sclaw_sre_agent run [--service <name>] [--summary <text>] [--severity <sev1|sev2|sev3|sev4>] [--env <prod|staging|dev>] [--mode <mock|real>] [--output <text|json>]");
-    println!("  sclaw_sre_agent repl [--service <name>] [--severity <...>] [--env <...>] [--mode <...>] [--output <...>]");
-    println!("  sclaw_sre_agent doctor [--mode <mock|real>]");
-    println!("  sclaw_sre_agent benefits");
-    println!("  sclaw_sre_agent help");
+    println!("  sentinel-sre run [--service <name>] [--summary <text>] [--severity <sev1|sev2|sev3|sev4>] [--env <prod|staging|dev>] [--mode <mock|real>] [--output <text|json>]");
+    println!("  sentinel-sre repl [--service <name>] [--severity <...>] [--env <...>] [--mode <...>] [--output <...>]");
+    println!("  sentinel-sre doctor [--mode <mock|real>]");
+    println!("  sentinel-sre benefits");
+    println!("  sentinel-sre help");
     println!();
     print_repl_help();
 }

@@ -1,3 +1,4 @@
+// Sentinel-SRE - SRE Incident Response Agent
 pub mod approval;
 pub mod audit;
 pub mod cli;

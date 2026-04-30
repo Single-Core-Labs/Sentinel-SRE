@@ -1,5 +1,5 @@
 [package]
-name = "sclaw_sre_agent"
+name = "sentinel-sre"
 version = "0.1.0"
 edition = "2021"
 
